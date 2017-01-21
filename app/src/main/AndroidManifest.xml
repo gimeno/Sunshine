@@ -17,4 +17,7 @@
         </activity>
     </application>
 
+    <!-- This permission is necessary in order for Sunshine to perform network access. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
