@@ -2,6 +2,8 @@ package com.example.android.sunshine.app;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -44,8 +46,24 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
-                Intent intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
+                Intent intent__settings = new Intent(this, SettingsActivity.class);
+                startActivity(intent__settings);
+                return true;
+            case R.id.action_see_location:
+                Intent intent_map = new Intent(Intent.ACTION_VIEW);
+                SharedPreferences sharedPrefs =
+                        PreferenceManager.getDefaultSharedPreferences(this);
+                String location = sharedPrefs.getString(
+                        getString(R.string.pref_location_key),
+                        getString(R.string.pref_location_default));
+                Uri builtUri = Uri.parse("geo:0,0?")
+                        .buildUpon()
+                        .appendQueryParameter("q", location)
+                        .build();
+                intent_map.setData(builtUri);
+                if (intent_map.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent_map);
+                }
                 return true;
         }
 
