@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
-                Intent intent__settings = new Intent(this, SettingsActivity.class);
-                startActivity(intent__settings);
+                Intent intent_settings = new Intent(this, SettingsActivity.class);
+                startActivity(intent_settings);
                 return true;
             case R.id.action_see_location:
                 Intent intent_map = new Intent(Intent.ACTION_VIEW);
