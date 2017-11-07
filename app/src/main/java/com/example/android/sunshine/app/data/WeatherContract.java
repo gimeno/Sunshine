@@ -26,6 +26,8 @@ import android.text.format.Time;
  */
 public class WeatherContract {
 
+    //master test
+
     //Another test
 
     //second
